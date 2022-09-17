@@ -72,6 +72,8 @@ export default {
             this.$cookies.set("cname", resData.adminName)
             this.$cookies.set("cid", resData.adminId)
             this.$cookies.set("role", 0)
+            //模拟生成token
+            localStorage.setItem("token","adminIsLogin")
             // 跳转到管理员页面
 
           }else if (resData.role == '1'){
@@ -79,12 +81,16 @@ export default {
             this.$cookies.set("cname", resData.teacherName)
             this.$cookies.set("cid", resData.teacherId)
             this.$cookies.set("role", 1)
+            //模拟生成token
+            localStorage.setItem("token","teacherIsLogin")
             // 跳转到教师页面
 
           }else {
             this.$cookies.set("cname", resData.studentName)
             this.$cookies.set("cid", resData.studentId)
             this.$cookies.set("role", 2)
+            //模拟生成token
+            localStorage.setItem("token","studentIsLogin")
             // 跳转到学生页面
             router.push({path: '/student'})
           }

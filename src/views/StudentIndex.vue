@@ -67,6 +67,7 @@ export default {
       console.log("触发了退出登录")
       this.$cookies.remove("cname")
       this.$cookies.remove("cid")
+      localStorage.removeItem("token")
       router.push("/")
     }
   },

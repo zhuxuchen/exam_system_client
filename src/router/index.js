@@ -35,4 +35,14 @@ const router = createRouter({
   routes
 })
 
+// 访问控制
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+  if ((to.path === '/student' || to.path === '/index') && !token) {
+    next('/login')
+  }else {
+    next()
+  }
+})
+
 export default router
