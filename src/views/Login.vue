@@ -89,11 +89,7 @@ export default {
             router.push({path: '/student'})
           }
         }else {
-          this.$message({
-            showClose: true,
-            type: 'error',
-            message: '用户名或密码错误！'
-          })
+          this.$message.error("用户名或密码错误！")
         }
       })
 

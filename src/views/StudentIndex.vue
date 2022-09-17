@@ -20,15 +20,17 @@
       </el-col>
     </el-row>
     <!--  路由区域  -->
-<!--    <div class="main">-->
-<!--      <router-view></router-view>-->
-<!--    </div>-->
+    <div class="main">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
+import router from "@/router";
+import {mapState} from "vuex";
+
 export default {
-  name: "StudentIndex",
   data(){
     return {
       flag: false,
@@ -36,6 +38,7 @@ export default {
     }
   },
   methods: {
+    // 用户信息
     userInfo() {
       let studentName = this.$cookies.get("cname")
       let studentId = this.$cookies.get("cid")
@@ -47,6 +50,9 @@ export default {
     // 跳转到考试模式
     exam() {
       console.log("触发了我的试卷")
+      let isPractice = false
+      this.$store.commit("practice", isPractice)
+      router.push({path: '/student'})
     },
     // 跳转到我的练习
     practice() {
@@ -59,11 +65,15 @@ export default {
     // 退出登录
     exit() {
       console.log("触发了退出登录")
+      this.$cookies.remove("cname")
+      this.$cookies.remove("cid")
+      router.push("/")
     }
   },
   created() {
     this.userInfo()
-  }
+  },
+  computed:mapState(["isPractice"])
 }
 </script>
 
