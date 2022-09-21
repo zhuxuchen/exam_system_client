@@ -25,7 +25,9 @@ const routes = [
     // name: 'StudentIndex',
     component: () => import('@/views/StudentIndex'),
     children: [
-      {path: '', component: () => import('@/components/student/myExam')}
+      {path: '', component: () => import('@/components/student/myExam')},
+      {path: '/startexam', component: () => import('@/components/student/startExam')},
+      {path: '/manager', component: () => import('@/components/student/manager')}
     ]
   }
 ]

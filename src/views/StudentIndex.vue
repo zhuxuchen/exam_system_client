@@ -3,7 +3,7 @@
     <el-row class="padding-50">
       <el-col :span="24">
         <ul class="list">
-          <li class="logo"><i class="iconfont icon-kaoshi"></i><span>Exam-Online</span></li>
+          <li class="logo" @click="exam()"><i class="iconfont icon-kaoshi"></i><span>Exam-Online</span></li>
           <li><a href="javascript:;" @click="exam()">我的试卷</a></li>
           <li><a href="javascript:;" @click="practice()">我的练习</a></li>
           <li><router-link to="/scoreTable">我的分数</router-link></li>
@@ -57,10 +57,14 @@ export default {
     // 跳转到我的练习
     practice() {
       console.log("触发了我的练习")
+      let isPractise = true
+      this.$store.commit("practice", isPractise)
+      router.push({path: '/startexam'})
     },
     // 管理中心
     manage() {
       console.log("触发了管理中心")
+      router.push({path: '/manager'})
     },
     // 退出登录
     exit() {

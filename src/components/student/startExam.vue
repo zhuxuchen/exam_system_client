@@ -1,10 +1,28 @@
-// 我的试卷页面组件
 <template>
   <div id="myExam">
-    <div class="title">我的试卷</div>
+    <div class="title">我的练习</div>
     <div class="wrapper">
       <ul class="top">
-        <li class="order" @click="handleCurrentChange(1)">试卷列表</li>
+        <li class="order">
+          <el-badge :value="pagination.total" class="item" type="primary">
+            <span @click="handleCurrentChange(1)">全部</span>
+          </el-badge>
+        </li>
+        <li class="order">
+          <el-badge :value="1" class="item" type="primary">
+            <span>未开始</span>
+          </el-badge>
+        </li>
+        <li class="order">
+          <el-badge :value="2" class="item" type="primary">
+            <span>已开始</span>
+          </el-badge>
+        </li>
+        <li class="order">
+          <el-badge :value="1" class="item">
+            <span>已过期</span>
+          </el-badge>
+        </li>
         <li class="search-li"><div class="icon"><input type="text" placeholder="试卷名称" class="search" v-model="key" @keyup.enter="search()"><i class="el-icon-search"></i></div></li>
         <li><el-button type="primary" @click="search()">搜索试卷</el-button></li>
       </ul>
@@ -36,6 +54,7 @@
 
 <script>
 export default {
+  name: "startExam",
   data() {
     return {
       // 搜索关键词
@@ -59,7 +78,7 @@ export default {
             // 加载状态设置为false
             this.loading = false
             console.log(this.pagination)
-      }).catch( () => {
+          }).catch( () => {
         this.$message.error("获取信息失败，请稍后再试！")
       })
     },
@@ -170,6 +189,99 @@ export default {
 .wrapper .top {
   border-bottom: 1px solid #eee;
   margin-bottom: 20px;
+}
+#myExam .search-li {
+  margin-left: auto;
+}
+.top .search-li {
+  margin-left: auto;
+}
+.top li {
+  display: flex;
+  align-items: center;
+}
+.top .search {
+  margin-left: auto;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.top .search:hover {
+  color: #0195ff;
+  border-color: #0195ff;
+}
+.wrapper .top {
+  display: flex;
+}
+.wrapper .top li {
+  margin: 20px;
+}
+#myExam {
+  width: 980px;
+  margin: 0 auto;
+}
+#myExam .title {
+  margin: 20px;
+}
+#myExam .wrapper {
+  background-color: #fff;
+}
+.wrapper .top .order {
+  cursor: pointer;
+}
+.wrapper .top .order:hover {
+  color: #0195ff;
+  border-bottom: 2px solid #0195ff;
+}
+.wrapper .top .order:visited {
+  color: #0195ff;
+  border-bottom: 2px solid #0195ff;
+}
+.item .info i {
+  margin-right: 5px;
+  color: #0195ff;
+}
+.item .info span {
+  margin-right: 14px;
+}
+.paper .item {
+  border-radius: 4px;
+  padding: 20px 30px;
+  border: 1px solid #eee;
+  box-shadow: 0 0 4px 2px rgba(217,222,234,0.3);
+  transition: all 0.6s ease;
+}
+.paper .item:hover {
+  box-shadow: 0 0 4px 2px rgba(140, 193, 248, 0.45)
+}
+.paper .item .info {
+  font-size: 14px;
+  color: #88949b;
+}
+.paper .item .name {
+  font-size: 14px;
+  color: #88949b;
+}
+.paper * {
+  margin: 20px 0;
+}
+.wrapper .paper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.top .el-icon-search {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.top .icon {
+  position: relative;
+}
+.wrapper .top {
+  border-bottom: 1px solid #eee;
 }
 #myExam .search-li {
   margin-left: auto;
