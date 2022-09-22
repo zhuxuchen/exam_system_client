@@ -75,7 +75,7 @@ export default {
             //模拟生成token
             localStorage.setItem("token","adminIsLogin")
             // 跳转到管理员页面
-
+            router.push({path: '/index'})
           }else if (resData.role == '1'){
             // 设置cookie并跳转到教师页面
             this.$cookies.set("cname", resData.teacherName)
@@ -84,7 +84,7 @@ export default {
             //模拟生成token
             localStorage.setItem("token","teacherIsLogin")
             // 跳转到教师页面
-
+            router.push({path: '/index'})
           }else {
             this.$cookies.set("cname", resData.studentName)
             this.$cookies.set("cid", resData.studentId)

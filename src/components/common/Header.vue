@@ -1,3 +1,4 @@
+<!-- 顶部信息栏 -->
 <template>
   <header id="topbar">
     <el-row>
@@ -26,9 +27,56 @@
 </template>
 
 <script>
+import router from "@/router";
+import {mapMutations, mapState} from "vuex";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: "Header"
+  name: "Header",
+  data() {
+    return {
+      login_flag: false,
+      user: {
+        userName: null,
+        userId: null
+      }
+    }
+  },
+  computed: mapState(["flag", "menu"]),
+  methods: {
+    // 获取用户信息
+    getUserInfo() {
+      let userName = this.$cookies.get("cname")
+      let userId = this.$cookies.get("cid")
+      this.user.userName = userName
+      this.user.userId = userId
+    },
+    // 主页按钮
+    index() {
+      router.push({ path: '/index'})
+    },
+    // 显示、隐藏退出按钮
+    showSetting() {
+      this.login_flag = !this.login_flag
+    },
+    // 退出登录
+    exit() {
+      let role = this.$cookies.get("role")
+      this.$cookies.remove("cname")
+      this.$cookies.remove("cid")
+      this.$cookies.remove("role")
+      localStorage.removeItem("token")
+      router.push("/")
+      if (role == 0) {
+        this.menu.pop()
+      }
+    },
+    // 左侧栏放大缩小
+    ...mapMutations(["toggle"])
+  },
+  created() {
+    this.getUserInfo()
+  }
 }
 </script>
 
@@ -87,7 +135,7 @@ export default {
   cursor: pointer;
 }
 .user .out {
-  font-size: 14px;
+  font-size: 13px;
   position: absolute;
   top: 80px;
   right: 0px;
