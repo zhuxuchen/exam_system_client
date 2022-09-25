@@ -7,7 +7,7 @@
         <span class="title" @click="index()">EXAM-SYSTEM</span>
       </el-col>
       <el-col :span="20" class="topbar-right">
-        <i class="el-icon-menu" @click="toggle()"></i>
+        <i class="el-icon-menu" @click="toggle()"><el-icon><Menu /></el-icon></i>
         <div class="user">
           <span>{{user.userName}}</span>
           <img src="@/assets/img/userimg.png" class="user-img" ref="img" @click="showSetting()" />

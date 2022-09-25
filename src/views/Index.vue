@@ -4,10 +4,10 @@
     <Header class="topbar"></Header>
     <section class="container">
       <div class="left_side">
-        <mainLeft></mainLeft>
+        <Left></Left>
       </div>
       <div class="main_wrapper">
-        <navigator class="nav"></navigator>
+        <Navigator class="nav"></Navigator>
         <router-view></router-view>
       </div>
     </section>
@@ -16,11 +16,16 @@
 
 <script>
 import Header from "@/components/common/Header";
+import Left from "@/components/common/Left";
+import Navigator from "@/components/common/Navigator";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Index",
   components: {
-    Header
+    Header,
+    Left,
+    Navigator
   }
 }
 </script>
