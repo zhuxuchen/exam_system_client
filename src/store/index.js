@@ -14,7 +14,7 @@ export default createStore({
         content: [
           { item1: '功能介绍', path: '/examDescription' },
           { item2:'考试查询',path:'selectExam' },
-          { tem3:'添加考试',path:'/addExam' }
+          { item3:'添加考试',path:'/addExam' }
         ]
       },
       {
