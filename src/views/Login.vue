@@ -11,10 +11,10 @@
             <p class="title">用户登录</p>
             <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
               <el-form-item label="用户名">
-                <el-input v-model.number="formLabelAlign.username" placeholder="请输入用户名"></el-input>
+                <el-input v-model.number="formLabelAlign.username" @keyup.enter="login()" placeholder="请输入用户名"></el-input>
               </el-form-item>
               <el-form-item label="密码">
-                <el-input v-model="formLabelAlign.password" placeholder="请输入密码" type='password'></el-input>
+                <el-input v-model="formLabelAlign.password" @keyup.enter="login()" placeholder="请输入密码" type='password'></el-input>
               </el-form-item>
               <div class="submit">
                 <el-button type="primary" class="row-login" @click="login()">登录</el-button>

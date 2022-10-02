@@ -19,6 +19,18 @@ const routes = [
       {
         path: '',
         component: () => import('@/components/common/hello')
+      },
+      {
+        path: '/examDescription',
+        component: () => import('@/components/teacher/examDescription')
+      },
+      {
+        path: '/selectExam',
+        component: () => import('@/components/teacher/selectExam')
+      },
+      {
+        path: '/addExam',
+        component: () => import('@/components/teacher/addExam')
       }
     ]
   },

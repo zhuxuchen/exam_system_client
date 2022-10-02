@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import axios from "axios";
 import VueCookies from 'vue-cookies'
 import mitt from 'mitt'
@@ -15,7 +16,9 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 app.use(store)
 app.use(router)
-app.use(ElementPlus)
+app.use(ElementPlus, {
+    locale: zhCn,
+})
 app.use(VueCookies)
 // axios.defaults.baseURL = 'http://localhost:8080'
 app.config.globalProperties.$axios = axios

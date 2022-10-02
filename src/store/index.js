@@ -41,7 +41,7 @@ export default createStore({
       },
       {
         index: '4',
-        title: '成绩管理',
+        title: '学生管理',
         icon: 'icon-role',
         content: [
           { item1:'学生管理',path:'/studentManage' },
