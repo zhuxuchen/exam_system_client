@@ -122,6 +122,8 @@ export default {
         if (res.data.code == 200) {
           this.form = res.data.data
         }
+      }).catch( () => {
+        this.$message.error('error')
       })
     },
     // 确认关闭提醒
