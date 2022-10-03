@@ -31,6 +31,22 @@ const routes = [
       {
         path: '/addExam',
         component: () => import('@/components/teacher/addExam')
+      },
+      {
+        path: '/studentManage',
+        component: () => import('@/components/teacher/studentManage')
+      },
+      {
+        path: '/addStudent',
+        component: () => import('@/components/teacher/addStudent')
+      },
+      {
+        path: '/teacherManage',
+        component: () => import('@/components/admin/teacherManage')
+      },
+      {
+        path: '/addTeacher',
+        component: () => import('@/components/admin/addTeacher')
       }
     ]
   },
