@@ -58,9 +58,11 @@ const routes = [
     children: [
       {path: '', component: () => import('@/components/student/myExam')},
       {path: '/startexam', component: () => import('@/components/student/startExam')},
-      {path: '/manager', component: () => import('@/components/student/manager')}
+      {path: '/manager', component: () => import('@/components/student/manager')},
+      {path: '/examMsg', component: () => import('@/components/student/examMsg')}
     ]
-  }
+  },
+  {path: '/answer', component: () => import('@/components/student/answer')}
 ]
 
 const router = createRouter({

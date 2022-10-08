@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import router from "@/router";
+
 export default {
   data() {
     return {
@@ -88,6 +90,7 @@ export default {
     // 跳转到试卷详情页
     toExamMsg(examCode) {
       console.log(examCode)
+      router.push({path: '/examMsg', query: {examCode}})
     }
   },
   created() {
