@@ -53,6 +53,8 @@
 </template>
 
 <script>
+import router from "@/router";
+
 export default {
   name: "startExam",
   data() {
@@ -107,6 +109,7 @@ export default {
     // 跳转到试卷详情页
     toExamMsg(examCode) {
       console.log(examCode)
+      router.replace({path: '/examMsg', query: {examCode}})
     }
   },
   created() {

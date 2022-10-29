@@ -21,7 +21,7 @@
     </el-row>
     <!--  路由区域  -->
     <div class="main">
-      <router-view></router-view>
+      <router-view :user="user"></router-view>
     </div>
   </div>
 </template>

@@ -59,7 +59,9 @@ const routes = [
       {path: '', component: () => import('@/components/student/myExam')},
       {path: '/startexam', component: () => import('@/components/student/startExam')},
       {path: '/manager', component: () => import('@/components/student/manager')},
-      {path: '/examMsg', component: () => import('@/components/student/examMsg')}
+      {path: '/examMsg', component: () => import('@/components/student/examMsg')},
+      {path: '/studentScore', component: () => import("@/components/student/answerScore")},
+      {path: '/scoreTable', component: () => import("@/components/student/scoreTable")}
     ]
   },
   {path: '/answer', component: () => import('@/components/student/answer')}
