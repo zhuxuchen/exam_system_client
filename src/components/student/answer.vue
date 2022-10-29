@@ -407,14 +407,126 @@ export default {
         }
       },1000 * 60)
     },
+    // 提交试卷
     commit() {
-
-    }
+      /* 计算选择题总分 */
+      let topic1Answer = this.topic1Answer
+      let finalScore = 0
+      topic1Answer.forEach((element,index) => { //循环每道选择题根据选项计算分数
+        let right = null
+        if(element != null) {
+          switch(element) { //选项1,2,3,4 转换为 "A","B","C","D"
+            case 1:
+              right = "A"
+              break
+            case 2:
+              right = "B"
+              break
+            case 3:
+              right = "C"
+              break
+            case 4:
+              right = "D"
+          }
+          if(right == this.topic[1][index].rightAnswer) { // 当前选项与正确答案对比
+            finalScore += this.topic[1][index].score // 计算总分数
+          }
+          console.log(right,this.topic[1][index].rightAnswer)
+        }
+        // console.log(topic1Answer)
+      })
+      /**计算判断题总分 */
+          // console.log(`this.fillAnswer${this.fillAnswer}`)
+          // console.log(this.topic[2][this.index])
+      let fillAnswer = this.fillAnswer
+      fillAnswer.forEach((element,index) => { //此处index和 this.index数据不一致，注意
+        element.forEach((inner) => {
+          if(this.topic[2][index].answer.includes(inner)) { //判断填空答案是否与数据库一致
+            console.log("正确")
+            finalScore += this.topic[2][this.index].score
+          }
+        })
+      });
+      /** 计算判断题总分 */
+      let topic3Answer = this.judgeAnswer
+      topic3Answer.forEach((element,index) => {
+        let right = null
+        switch(element) {
+          case 1:
+            right = "T"
+            break
+          case 2:
+            right = "F"
+        }
+        if(right == this.topic[3][index].answer) { // 当前选项与正确答案对比
+          finalScore += this.topic[3][index].score // 计算总分数
+        }
+      })
+      console.log(`目前总分${finalScore}`)
+      if(this.time != 0) {
+        this.$confirm("考试结束时间未到,是否提前交卷","友情提示",{
+          confirmButtonText: '立即交卷',
+          cancelButtonText: '再检查一下',
+          type: 'warning'
+        }).then( () => {
+          let date = new Date()
+          this.endTime = this.getTime(date)
+          let answerDate = this.endTime.substr(0,10)
+          // 提交成绩
+          this.$axios.post('api/score', {
+            examCode: this.examData.examCode, //考试编号
+            studentId: this.userInfo.id, //学号
+            subject: this.examData.source, //课程名称
+            etScore: finalScore, //答题成绩
+            answerDate: answerDate, //答题日期
+          }).then( res => {
+            if (res.data.code == 200) {
+              router.replace({path:'/studentScore',query: {
+                  score: finalScore,
+                  startTime: this.startTime,
+                  endTime: this.endTime
+                }})
+            }
+          })
+        }).catch( () => {
+          console.log("继续答题")
+        })
+      }
+    },
+    // 禁止浏览器刷新和鼠标右键事件
+    stopF5Refresh() {
+      document.onkeydown = function(e) {
+        let evt = window.event || e;
+        let code = evt.keyCode || evt.which;
+        // 屏蔽F1---F12
+        if (code > 111 && code < 124) {
+          if (evt.preventDefault) {
+            evt.preventDefault();
+          } else {
+            evt.keyCode = 0;
+            evt.returnValue = false;
+          }
+        }
+      };
+      // 禁止鼠标右键菜单
+      // eslint-disable-next-line no-unused-vars
+      document.oncontextmenu = function(e) {
+        return false;
+      };
+      // 阻止后退的所有动作，包括 键盘、鼠标手势等产生的后退动作。
+      history.pushState(null, null, window.location.href);
+      window.addEventListener("popstate", function() {
+        history.pushState(null, null, window.location.href);
+      });
+    },
   },
   created() {
     this.getCookies()
     this.getExamData()
     this.showTime()
+  },
+  mounted() {
+    this.stopF5Refresh()
   },
   computed: mapState(["isPractice"])
 }
