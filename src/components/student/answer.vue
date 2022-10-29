@@ -83,7 +83,7 @@
           <div class="content">
             <p class="topic"><span class="number">{{number}}</span>{{showQuestion}}</p>
             <div v-if="currentType == 1">
-              <el-radio-group v-model="radio[index]" @change="getChangeLabel" style="display: table;float: left;">
+              <el-radio-group v-model="radio[index]" @change="getChangeLabel" style="display: table">
                 <div><el-radio :label="1">{{showAnswer.answerA}}</el-radio></div>
                 <div><el-radio :label="2">{{showAnswer.answerB}}</el-radio></div>
                 <div><el-radio :label="3">{{showAnswer.answerC}}</el-radio></div>
@@ -107,14 +107,14 @@
               </div>
               <div class="analysis" v-if="isPractice">
                 <ul>
-                  <li> <el-tag type="success">正确姿势：</el-tag><span class="right">{{topic[2][index].answer}}</span></li>
+                  <li> <el-tag type="success">正确答案：</el-tag><span class="right">{{topic[2][index].answer}}</span></li>
                   <li><el-tag>题目解析：</el-tag></li>
                   <li>{{topic[2][index].analysis == null ? '暂无解析': topic[2][index].analysis}}</li>
                 </ul>
               </div>
             </div>
             <div class="judge" v-if="currentType == 3">
-              <el-radio-group v-model="judgeAnswer[index]" @change="getJudgeLabel" v-if="currentType == 3" style="float: left">
+              <el-radio-group v-model="judgeAnswer[index]" @change="getJudgeLabel" v-if="currentType == 3" style="display: table">
                 <el-radio :label="1">正确</el-radio>
                 <el-radio :label="2">错误</el-radio>
               </el-radio-group>
@@ -538,6 +538,8 @@ export default {
   margin: 0px 6px 0px 20px;
 }
 .analysis {
+  display: table;
+  float: left;
   margin-top: 20px;
   .right {
     color: #2776df;
