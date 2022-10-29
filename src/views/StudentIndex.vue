@@ -52,14 +52,14 @@ export default {
       console.log("触发了我的试卷")
       let isPractice = false
       this.$store.commit("practice", isPractice)
-      router.push({path: '/student'})
+      router.replace({path: '/student'})
     },
     // 跳转到我的练习
     practice() {
       console.log("触发了我的练习")
       let isPractise = true
       this.$store.commit("practice", isPractise)
-      router.push({path: '/startexam'})
+      router.replace({path: '/startexam'})
     },
     // 管理中心
     manage() {

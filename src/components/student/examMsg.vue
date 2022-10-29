@@ -140,7 +140,7 @@ export default {
       })
     },
     toAnswer(examCode) {
-      router.push({path: '/answer', query: {examCode}})
+      router.replace({path: '/answer', query: {examCode}})
     }
   },
   mounted() {

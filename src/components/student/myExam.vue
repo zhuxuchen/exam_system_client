@@ -90,7 +90,7 @@ export default {
     // 跳转到试卷详情页
     toExamMsg(examCode) {
       console.log(examCode)
-      router.push({path: '/examMsg', query: {examCode}})
+      router.replace({path: '/examMsg', query: {examCode}})
     }
   },
   created() {
