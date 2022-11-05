@@ -47,6 +47,14 @@ const routes = [
       {
         path: '/addTeacher',
         component: () => import('@/components/admin/addTeacher')
+      },
+      {
+        path: '/answerDescription',
+        component: () => import('@/components/teacher/answerDescription')
+      },
+      {
+        path: '/selectAnswer',
+        component: () => import('@/components/teacher/selectAnswer')
       }
     ]
   },
