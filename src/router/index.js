@@ -55,7 +55,15 @@ const routes = [
       {
         path: '/selectAnswer',
         component: () => import('@/components/teacher/selectAnswer')
-      }
+      },
+      {
+        path: '/addAnswer',
+        component: () => import('@/components/teacher/addAnswer')
+      },
+      {
+        path: '/addAnswerChildren',
+        component: () => import('@/components/teacher/addAnswerChildren')
+      },
     ]
   },
   {
