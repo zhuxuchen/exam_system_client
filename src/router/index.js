@@ -72,6 +72,14 @@ const routes = [
         path:'/grade',
         component: () => import('@/components/charts/grade')
       },
+      {
+        path: '/selectExamToPart',
+        component: () => import('@/components/teacher/selectExamToPart')
+      },
+      {
+        path: '/scorePart',
+        component: () => import('@/components/charts/scorePart')
+      },
     ]
   },
   {
