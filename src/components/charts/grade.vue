@@ -29,7 +29,7 @@ export default {
     score() {
       let studentId = router.currentRoute.value.query.studentId
       console.log(studentId)
-      this.$axios('/api/score/' + studentId).then(res => { //根据学生Id查询成绩
+      this.$axios('api/score/' + studentId).then(res => { //根据学生Id查询成绩
         console.log(res)
         if(res.data.code == 200) {
           let rootData = res.data.data
