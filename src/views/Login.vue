@@ -38,7 +38,7 @@
     <section class="remind">
       <span>管理员账号：9527</span>
       <span>教师账号：20081001</span>
-      <span>学生账号：20154084</span>
+      <span>学生账号：20194084</span>
       <span>密码都是：123456</span>
     </section>
   </div>
@@ -53,7 +53,7 @@ export default {
     return {
       labelPosition: 'left',
       formLabelAlign: {
-        username: '20154084',
+        username: '20194084',
         password: '123456'
       }
     };
