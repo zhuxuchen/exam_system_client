@@ -64,6 +64,14 @@ const routes = [
         path: '/addAnswerChildren',
         component: () => import('@/components/teacher/addAnswerChildren')
       },
+      {
+        path: '/allStudentsGrade',
+        component: () => import('@/components/teacher/allStudentsGrade')
+      },
+      {
+        path:'/grade',
+        component: () => import('@/components/charts/grade')
+      },
     ]
   },
   {

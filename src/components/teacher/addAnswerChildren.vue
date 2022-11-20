@@ -383,7 +383,7 @@ export default {
         let data = res.data
         if (data.code == 200) {
           setTimeout(() => {
-            this.$router.push({path: '/selectAnswer'})
+            router.push({path: '/selectAnswer'})
           },1000)
           this.$message({
             message: data.message,
