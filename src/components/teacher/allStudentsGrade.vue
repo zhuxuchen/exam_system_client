@@ -45,8 +45,8 @@ export default {
   },
   methods: {
     getAnswerInfo() {
-      //分页查询所有试卷信息
-      this.$axios('api/student/' + this.pagination.current + '/' + this.pagination.size).then(res => {
+      //分页查询所有学生信息
+      this.$axios('api/students/' + this.pagination.current + '/' + this.pagination.size).then(res => {
         this.pagination = res.data.data
       })
     },

@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     onSubmit() {
-     this.$axios.get('api/paperId').then( res => {
+     this.$axios.get('api/examManagePaperId').then( res => {
        // 获取后端发送来的paperId，使paperId自增
        this.form.paperId = res.data.data.paperId + 1
        this.$axios.post('api/exam', {...this.form}).then( res => {

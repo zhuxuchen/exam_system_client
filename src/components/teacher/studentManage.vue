@@ -80,7 +80,7 @@ export default {
   methods: {
     // 获取学生信息
     getStudentInfo() {
-      this.$axios.get('api/student/' + this.pagination.current + '/' + this.pagination.size)
+      this.$axios.get('api/students/' + this.pagination.current + '/' + this.pagination.size)
           .then( res => {
             this.pagination = res.data.data
           }).catch( () => {

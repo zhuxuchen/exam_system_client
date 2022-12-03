@@ -81,7 +81,7 @@ export default {
     // 获取教师信息
     getTeacherInfo(){
       // 分页查询所有教师信息
-      this.$axios.get('api/teacher/' + this.pagination.current + '/' + this.pagination.size)
+      this.$axios.get('api/teachers/' + this.pagination.current + '/' + this.pagination.size)
           .then( res => {
             this.pagination = res.data.data
           }).catch( () => {
@@ -113,12 +113,12 @@ export default {
       this.$axios.put('api/teacher', {...this.form}).then( res => {
         if (res.data.code == 200) {
           this.$message.success("修改成功！")
+          // 更新后重新获取学生信息
+          this.getTeacherInfo()
         }
       }).catch( () => {
         this.$message.error('error')
       })
-      // 更新后重新获取学生信息
-      this.getTeacherInfo()
     },
     // 删除当前教师信息
     deleteById(teacherId) {

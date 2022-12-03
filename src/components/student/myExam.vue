@@ -55,7 +55,7 @@ export default {
   methods: {
     // 获取当前用户的考试信息
     getExamInfo() {
-      this.$axios.get('api/exam/' + this.pagination.current + '/' + this.pagination.size)
+      this.$axios.get('api/exams/' + this.pagination.current + '/' + this.pagination.size)
           .then(res => {
             this.pagination = res.data.data
             // 加载状态设置为false

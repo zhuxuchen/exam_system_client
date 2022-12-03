@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     getExamInfo() {
-      this.$axios.get('api/exam/' + this.pagination.current + '/' + this.pagination.size)
+      this.$axios.get('api/exams/' + this.pagination.current + '/' + this.pagination.size)
           .then(res => {
             this.pagination = res.data.data
           })
