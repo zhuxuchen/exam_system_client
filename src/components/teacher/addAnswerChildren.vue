@@ -407,7 +407,7 @@ export default {
     changeSubmit() { //选择题题库提交
       this.postChange.subject = this.subject
       this.$axios({ //提交数据到选择题题库表
-        url: 'api/MultiQuestion',
+        url: 'api/multiQuestion',
         method: 'post',
         data: {
           ...this.postChange
