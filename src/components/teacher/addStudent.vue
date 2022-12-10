@@ -70,7 +70,7 @@ export default {
           this.$message.success('添加成功！')
         }
       }).catch( () => {
-        this.$message.error()
+        this.$message.error("数据有误！")
       })
     },
     // 重置表单
